@@ -1,0 +1,90 @@
+#:kivy 2.1.0
+
+<PetListScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 0.95, 0.97, 0.99, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # 顶部标题栏
+        BoxLayout:
+            size_hint_y: 0.12
+            padding: 15
+            spacing: 15
+
+            Button:
+                text: '< 返回'
+                size_hint_x: 0.2
+                font_size: '16sp'
+                background_color: 0.9, 0.9, 0.9, 1
+                on_press: app.get_manager().current = 'main'
+
+            Label:
+                text: '宠物列表'
+                font_size: '22sp'
+                bold: True
+                color: 0.2, 0.6, 0.8, 1
+                size_hint_x: 0.6
+
+            Button:
+                text: '➕ 添加'
+                size_hint_x: 0.2
+                font_size: '16sp'
+                background_color: 0.2, 0.6, 0.8, 1
+                color: 1, 1, 1, 1
+                on_press: app.get_manager().current = 'add_pet'
+
+        # 搜索栏
+        BoxLayout:
+            size_hint_y: 0.1
+            padding: [15, 5, 15, 5]
+            spacing: 10
+
+            TextInput:
+                id: search_input
+                hint_text: '搜索宠物名称或品种...'
+                size_hint_x: 0.7
+                font_size: '14sp'
+                padding: [10, 5]
+                canvas:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [8, 8, 8, 8]
+                    Color:
+                        rgba: 0.8, 0.8, 0.8, 1
+                    Line:
+                        rectangle: (self.x, self.y, self.width, self.height)
+                        width: 1
+
+            Spinner:
+                text: '全部'
+                values: ['全部', '猫咪', '狗狗']
+                size_hint_x: 0.3
+                font_size: '14sp'
+
+        # 宠物列表
+        ScrollView:
+            size_hint_y: 0.78
+            padding: 15
+
+            GridLayout:
+                id: pet_cards_container
+                cols: 1
+                spacing: 12
+                size_hint_y: None
+                height: self.minimum_height
+
+                Label:
+                    text: '暂无宠物，请添加'
+                    font_size: '16sp'
+                    color: 0.5, 0.5, 0.5, 1
+                    size_hint_y: None
+                    height: 100
+                    halign: 'center'

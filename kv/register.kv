@@ -1,0 +1,111 @@
+<RegisterScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 20
+        
+        BoxLayout:
+            size_hint_y: 0.2
+            Label:
+                text: '用户注册'
+                font_size: '28sp'
+                font_name: 'SimHei'
+                color: (0.2, 0.5, 0.8, 1)
+        
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 15
+            size_hint_y: 0.6
+            
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 5
+                Label:
+                    text: '用户名'
+                    font_size: '16sp'
+                    font_name: 'SimHei'
+                    size_hint_y: 0.3
+                TextInput:
+                    id: username_input
+                    hint_text: '请输入用户名'
+                    font_size: '18sp'
+                    padding: [10, 10]
+                    size_hint_y: 0.7
+            
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 5
+                Label:
+                    text: '密码'
+                    font_size: '16sp'
+                    font_name: 'SimHei'
+                    size_hint_y: 0.3
+                TextInput:
+                    id: password_input
+                    hint_text: '请输入密码'
+                    font_size: '18sp'
+                    padding: [10, 10]
+                    password: True
+                    size_hint_y: 0.7
+            
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 5
+                Label:
+                    text: '确认密码'
+                    font_size: '16sp'
+                    font_name: 'SimHei'
+                    size_hint_y: 0.3
+                TextInput:
+                    id: confirm_password_input
+                    hint_text: '请再次输入密码'
+                    font_size: '18sp'
+                    padding: [10, 10]
+                    password: True
+                    size_hint_y: 0.7
+            
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 5
+                Label:
+                    text: '邮箱（可选）'
+                    font_size: '16sp'
+                    font_name: 'SimHei'
+                    size_hint_y: 0.3
+                TextInput:
+                    id: email_input
+                    hint_text: '请输入邮箱地址'
+                    font_size: '18sp'
+                    padding: [10, 10]
+                    size_hint_y: 0.7
+            
+            Button:
+                text: '注册'
+                font_size: '18sp'
+                font_name: 'SimHei'
+                size_hint_y: 0.7
+                background_color: (0.2, 0.5, 0.8, 1)
+                on_press: root.register()
+            
+            BoxLayout:
+                size_hint_y: 0.5
+                Label:
+                    text: '已有账号？'
+                    font_size: '14sp'
+                    font_name: 'SimHei'
+                Button:
+                    text: '立即登录'
+                    font_size: '14sp'
+                    font_name: 'SimHei'
+                    background_color: (1, 1, 1, 0)
+                    color: (0.2, 0.5, 0.8, 1)
+                    on_press: root.go_to_login()
+        
+        BoxLayout:
+            size_hint_y: 0.2
+            Label:
+                id: error_label
+                text: ''
+                font_size: '14sp'
+                font_name: 'SimHei'
+                color: (1, 0, 0, 1)

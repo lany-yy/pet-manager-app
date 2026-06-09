@@ -1,0 +1,66 @@
+#:kivy 2.1.0
+
+# 自定义组件样式
+
+<PetCard>:
+    size_hint_y: None
+    height: 150
+    orientation: 'vertical'
+    padding: 10
+    spacing: 5
+
+    canvas:
+        Color:
+            rgba: 0.95, 0.95, 0.95, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [10, 10, 10, 10]
+
+    AsyncImage:
+        source: root.avatar_path if root.avatar_path else 'assets/images/cat_placeholder.png'
+        size_hint_y: 0.6
+        allow_stretch: True
+        keep_ratio: True
+
+    Label:
+        text: root.name
+        font_size: '16sp'
+        bold: True
+        halign: 'center'
+
+    Label:
+        text: root.breed
+        font_size: '12sp'
+        color: 0.5, 0.5, 0.5, 1
+        halign: 'center'
+
+
+<ConfirmDialog>:
+    title: ''
+    message: ''
+    size_hint: (0.8, 0.4)
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 15
+
+        Label:
+            text: root.message
+            font_size: '16sp'
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+
+        BoxLayout:
+            size_hint_y: 0.3
+            spacing: 20
+
+            Button:
+                text: '取消'
+                on_press: root.dismiss()
+
+            Button:
+                text: '确定'
+                on_press: root.confirm(); root.dismiss()

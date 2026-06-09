@@ -1,0 +1,7 @@
+# Android应用清单配置
+# Buildozer会自动处理此文件
+
+[package]
+# 包名
+name = petmanager
+version = 1.0.0

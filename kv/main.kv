@@ -1,0 +1,140 @@
+#:kivy 2.1.0
+
+<Label>:
+    font_name: 'SimHei'
+
+<Button>:
+    font_name: 'SimHei'
+    font_size: '14sp'
+
+<TextInput>:
+    font_name: 'SimHei'
+    font_size: '14sp'
+
+<Spinner>:
+    font_name: 'SimHei'
+
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: 0.95, 0.97, 0.99, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            size_hint_y: 0.15
+            padding: [0, 10, 0, 10]
+
+            Label:
+                text: '猫狗宠物管理系统'
+                font_size: '32sp'
+                bold: True
+                color: 0.2, 0.6, 0.8, 1
+
+        GridLayout:
+            cols: 2
+            spacing: 15
+            padding: 10
+            size_hint_y: 0.7
+
+            Button:
+                text: '宠物列表'
+                font_size: '18sp'
+                background_color: 0.2, 0.6, 0.8, 1
+                color: 1, 1, 1, 1
+                size_hint_y: 0.3
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [12, 12, 12, 12]
+                on_press: app.get_manager().current = 'pet_list'
+
+            Button:
+                text: '添加宠物'
+                font_size: '18sp'
+                background_color: 0.3, 0.7, 0.5, 1
+                color: 1, 1, 1, 1
+                size_hint_y: 0.3
+                canvas.before:
+                    Color:
+                        rgba: 0.3, 0.7, 0.5, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [12, 12, 12, 12]
+                on_press: app.get_manager().current = 'add_pet'
+
+            Button:
+                text: '今日提醒'
+                font_size: '18sp'
+                background_color: 0.8, 0.6, 0.2, 1
+                color: 1, 1, 1, 1
+                size_hint_y: 0.3
+                canvas.before:
+                    Color:
+                        rgba: 0.8, 0.6, 0.2, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [12, 12, 12, 12]
+                on_press: app.get_manager().current = 'reminder'
+
+            Button:
+                text: '健康统计'
+                font_size: '18sp'
+                background_color: 0.6, 0.5, 0.8, 1
+                color: 1, 1, 1, 1
+                size_hint_y: 0.3
+                canvas.before:
+                    Color:
+                        rgba: 0.6, 0.5, 0.8, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [12, 12, 12, 12]
+                on_press: app.get_manager().current = 'statistics'
+
+            Button:
+                text: '疫苗管理'
+                font_size: '18sp'
+                background_color: 0.7, 0.5, 0.5, 1
+                color: 1, 1, 1, 1
+                size_hint_y: 0.3
+                canvas.before:
+                    Color:
+                        rgba: 0.7, 0.5, 0.5, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [12, 12, 12, 12]
+                on_press: app.get_manager().current = 'vaccine'
+
+            Button:
+                text: '设置'
+                font_size: '18sp'
+                background_color: 0.5, 0.5, 0.6, 1
+                color: 1, 1, 1, 1
+                size_hint_y: 0.3
+                canvas.before:
+                    Color:
+                        rgba: 0.5, 0.5, 0.6, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [12, 12, 12, 12]
+                on_press: app.get_manager().current = 'settings'
+
+        Label:
+            size_hint_y: 0.1
+            text: '版本 1.0.0'
+            font_size: '12sp'
+            color: 0.5, 0.5, 0.5, 1
+            halign: 'center'

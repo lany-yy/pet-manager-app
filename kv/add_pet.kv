@@ -1,0 +1,218 @@
+#:kivy 2.1.0
+
+<AddPetScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 15
+        spacing: 15
+        canvas.before:
+            Color:
+                rgba: 0.95, 0.97, 0.99, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # 顶部标题栏
+        BoxLayout:
+            size_hint_y: 0.1
+            spacing: 10
+
+            Button:
+                text: '< 返回'
+                size_hint_x: 0.2
+                font_size: '16sp'
+                background_color: 0.9, 0.9, 0.9, 1
+                on_press: root.go_back()
+
+            Label:
+                text: '编辑宠物' if root.is_editing else '添加宠物'
+                font_size: '22sp'
+                bold: True
+                color: 0.2, 0.6, 0.8, 1
+                size_hint_x: 0.6
+
+            Widget:
+                size_hint_x: 0.2
+
+        # 表单区域
+        ScrollView:
+            size_hint_y: 0.8
+
+            GridLayout:
+                cols: 1
+                spacing: 15
+                padding: 10
+                size_hint_y: None
+                height: self.minimum_height
+
+                # 宠物名称
+                BoxLayout:
+                    size_hint_y: None
+                    height: 70
+                    orientation: 'vertical'
+                    spacing: 5
+
+                    Label:
+                        text: '宠物名称 *'
+                        font_size: '14sp'
+                        bold: True
+                        color: 0.3, 0.3, 0.3, 1
+
+                    TextInput:
+                        id: name_input
+                        hint_text: '输入宠物名称'
+                        font_size: '14sp'
+                        padding: [10, 8]
+                        canvas:
+                            Color:
+                                rgba: 1, 1, 1, 1
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [8, 8, 8, 8]
+                            Color:
+                                rgba: 0.8, 0.8, 0.8, 1
+                            Line:
+                                rectangle: (self.x, self.y, self.width, self.height)
+                                width: 1
+
+                # 宠物类型
+                BoxLayout:
+                    size_hint_y: None
+                    height: 70
+                    orientation: 'vertical'
+                    spacing: 5
+
+                    Label:
+                        text: '宠物类型 *'
+                        font_size: '14sp'
+                        bold: True
+                        color: 0.3, 0.3, 0.3, 1
+
+                    Spinner:
+                        id: type_spinner
+                        text: '狗狗'
+                        values: ['狗狗', '猫咪']
+                        font_size: '14sp'
+                        canvas:
+                            Color:
+                                rgba: 1, 1, 1, 1
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [8, 8, 8, 8]
+                            Color:
+                                rgba: 0.8, 0.8, 0.8, 1
+                            Line:
+                                rectangle: (self.x, self.y, self.width, self.height)
+                                width: 1
+
+                # 品种
+                BoxLayout:
+                    size_hint_y: None
+                    height: 70
+                    orientation: 'vertical'
+                    spacing: 5
+
+                    Label:
+                        text: '品种'
+                        font_size: '14sp'
+                        bold: True
+                        color: 0.3, 0.3, 0.3, 1
+
+                    TextInput:
+                        id: breed_input
+                        hint_text: '输入品种（可选）'
+                        font_size: '14sp'
+                        padding: [10, 8]
+                        canvas:
+                            Color:
+                                rgba: 1, 1, 1, 1
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [8, 8, 8, 8]
+                            Color:
+                                rgba: 0.8, 0.8, 0.8, 1
+                            Line:
+                                rectangle: (self.x, self.y, self.width, self.height)
+                                width: 1
+
+                # 性别
+                BoxLayout:
+                    size_hint_y: None
+                    height: 70
+                    orientation: 'vertical'
+                    spacing: 5
+
+                    Label:
+                        text: '性别'
+                        font_size: '14sp'
+                        bold: True
+                        color: 0.3, 0.3, 0.3, 1
+
+                    Spinner:
+                        id: gender_spinner
+                        text: '未知'
+                        values: ['公', '母', '未知']
+                        font_size: '14sp'
+                        canvas:
+                            Color:
+                                rgba: 1, 1, 1, 1
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [8, 8, 8, 8]
+                            Color:
+                                rgba: 0.8, 0.8, 0.8, 1
+                            Line:
+                                rectangle: (self.x, self.y, self.width, self.height)
+                                width: 1
+
+                # 生日
+                BoxLayout:
+                    size_hint_y: None
+                    height: 70
+                    orientation: 'vertical'
+                    spacing: 5
+
+                    Label:
+                        text: '生日'
+                        font_size: '14sp'
+                        bold: True
+                        color: 0.3, 0.3, 0.3, 1
+
+                    TextInput:
+                        id: birthday_input
+                        hint_text: 'YYYY-MM-DD（可选）'
+                        font_size: '14sp'
+                        padding: [10, 8]
+                        canvas:
+                            Color:
+                                rgba: 1, 1, 1, 1
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [8, 8, 8, 8]
+                            Color:
+                                rgba: 0.8, 0.8, 0.8, 1
+                            Line:
+                                rectangle: (self.x, self.y, self.width, self.height)
+                                width: 1
+
+                # 保存按钮
+                Button:
+                    text: '保存宠物'
+                    size_hint_y: None
+                    height: 50
+                    font_size: '18sp'
+                    background_color: 0.2, 0.6, 0.8, 1
+                    color: 1, 1, 1, 1
+                    canvas.before:
+                        Color:
+                            rgba: 0.2, 0.6, 0.8, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10, 10, 10, 10]
+                    on_press: root.save_pet()

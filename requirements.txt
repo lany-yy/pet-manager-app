@@ -1,0 +1,15 @@
+# Python依赖清单
+# 核心框架
+kivy>=2.1.0
+kivymd>=1.1.1
+
+# 数据处理
+pillow>=9.0.0
+
+# 图表绘制
+matplotlib>=3.5.0
+
+# 原生功能调用
+plyer>=2.0.0
+
+# 日期处理（Python 3.9+内置datetime，无需额外安装）

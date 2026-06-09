@@ -1,0 +1,210 @@
+#:kivy 2.1.0
+
+<PetDetailScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: 0.95, 0.97, 0.99, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # 顶部标题栏
+        BoxLayout:
+            size_hint_y: 0.12
+            padding: 15
+            spacing: 15
+
+            Button:
+                text: '< 返回'
+                size_hint_x: 0.2
+                font_size: '16sp'
+                background_color: 0.9, 0.9, 0.9, 1
+                on_press: app.get_manager().current = 'pet_list'
+
+            Label:
+                text: '宠物详情'
+                font_size: '22sp'
+                bold: True
+                color: 0.2, 0.6, 0.8, 1
+                size_hint_x: 0.6
+
+            Button:
+                text: '🗑️'
+                size_hint_x: 0.1
+                font_size: '20sp'
+                background_color: 0.8, 0.4, 0.4, 1
+                color: 1, 1, 1, 1
+                on_press: root.delete_pet()
+
+        # 宠物信息卡片
+        BoxLayout:
+            size_hint_y: 0.35
+            padding: [15, 10, 15, 10]
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 10
+                canvas:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [12, 12, 12, 12]
+                    Color:
+                        rgba: 0.9, 0.9, 0.9, 1
+                    Line:
+                        rectangle: (self.x, self.y, self.width, self.height)
+                        width: 1
+
+                # 宠物名称
+                Label:
+                    text: root.pet.name if root.pet else '未命名'
+                    font_size: '24sp'
+                    bold: True
+                    color: 0.2, 0.6, 0.8, 1
+                    padding: [20, 15, 0, 0]
+
+                # 宠物信息
+                GridLayout:
+                    cols: 4
+                    spacing: 15
+                    padding: [20, 0, 20, 15]
+
+                    Label:
+                        text: '类型:'
+                        font_size: '14sp'
+                        bold: True
+                        color: 0.5, 0.5, 0.5, 1
+
+                    Label:
+                        text: root.pet.type_display if root.pet else ''
+                        font_size: '14sp'
+                        color: 0.3, 0.3, 0.3, 1
+
+                    Label:
+                        text: '品种:'
+                        font_size: '14sp'
+                        bold: True
+                        color: 0.5, 0.5, 0.5, 1
+
+                    Label:
+                        text: root.pet.breed if root.pet and root.pet.breed else '未知'
+                        font_size: '14sp'
+                        color: 0.3, 0.3, 0.3, 1
+
+                    Label:
+                        text: '性别:'
+                        font_size: '14sp'
+                        bold: True
+                        color: 0.5, 0.5, 0.5, 1
+
+                    Label:
+                        text: root.pet.gender_display if root.pet else ''
+                        font_size: '14sp'
+                        color: 0.3, 0.3, 0.3, 1
+
+                    Label:
+                        text: '年龄:'
+                        font_size: '14sp'
+                        bold: True
+                        color: 0.5, 0.5, 0.5, 1
+
+                    Label:
+                        text: root.pet.age_display if root.pet else ''
+                        font_size: '14sp'
+                        color: 0.3, 0.3, 0.3, 1
+
+        # 功能按钮区域
+        BoxLayout:
+            size_hint_y: 0.43
+            padding: 15
+
+            GridLayout:
+                cols: 2
+                spacing: 12
+
+                # 疫苗记录
+                Button:
+                    text: '💉 疫苗记录'
+                    font_size: '16sp'
+                    background_color: 0.2, 0.6, 0.8, 1
+                    color: 1, 1, 1, 1
+                    size_hint_y: 0.25
+                    canvas.before:
+                        Color:
+                            rgba: 0.2, 0.6, 0.8, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10, 10, 10, 10]
+                    on_press: root.go_to_vaccines()
+
+                # 驱虫记录
+                Button:
+                    text: '🐛 驱虫记录'
+                    font_size: '16sp'
+                    background_color: 0.6, 0.5, 0.8, 1
+                    color: 1, 1, 1, 1
+                    size_hint_y: 0.25
+                    canvas.before:
+                        Color:
+                            rgba: 0.6, 0.5, 0.8, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10, 10, 10, 10]
+                    on_press: root.go_to_deworm()
+
+                # 体重记录
+                Button:
+                    text: '⚖️ 体重记录'
+                    font_size: '16sp'
+                    background_color: 0.3, 0.7, 0.5, 1
+                    color: 1, 1, 1, 1
+                    size_hint_y: 0.25
+                    canvas.before:
+                        Color:
+                            rgba: 0.3, 0.7, 0.5, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10, 10, 10, 10]
+                    on_press: root.go_to_weights()
+
+                # 日常管理
+                Button:
+                    text: '🍖 日常管理'
+                    font_size: '16sp'
+                    background_color: 0.8, 0.6, 0.2, 1
+                    color: 1, 1, 1, 1
+                    size_hint_y: 0.25
+                    canvas.before:
+                        Color:
+                            rgba: 0.8, 0.6, 0.2, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10, 10, 10, 10]
+                    on_press: root.go_to_daily()
+
+                # 编辑宠物
+                Button:
+                    text: '✏️ 编辑资料'
+                    font_size: '16sp'
+                    background_color: 0.5, 0.5, 0.6, 1
+                    color: 1, 1, 1, 1
+                    size_hint_y: 0.25
+                    canvas.before:
+                        Color:
+                            rgba: 0.5, 0.5, 0.6, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10, 10, 10, 10]
+                    on_press: root.go_to_edit()
+
+                Widget:
+                    size_hint_y: 0.25
