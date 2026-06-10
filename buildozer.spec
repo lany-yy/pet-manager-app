@@ -32,8 +32,8 @@ orientation = portrait
 android.permissions = WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE,CAMERA
 
 # Android API级别
-android.minapi = 21
-android.api = 30
+android.minapi = 24
+android.api = 33
 
 # 支持的架构
 android.archs = arm64-v8a,armeabi-v7a
@@ -41,4 +41,5 @@ android.archs = arm64-v8a,armeabi-v7a
 # 打包输出目录
 bin_dir = bin
 
+# 自动接受SDK许可证
 android.accept_sdk_license = True
