@@ -40,3 +40,5 @@ android.archs = arm64-v8a,armeabi-v7a
 
 # 打包输出目录
 bin_dir = bin
+
+android.accept_sdk_license = True
